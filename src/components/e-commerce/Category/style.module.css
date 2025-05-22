@@ -14,6 +14,11 @@
   color: black;
 }
 
+.category a {
+  text-decoration: none;
+  color: black;
+}
+
 .category a:hover {
   text-decoration: underline;
 }

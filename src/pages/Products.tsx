@@ -1,4 +1,4 @@
-import { GridList } from "@components/common";
+import { GridList, Heading } from "@components/common";
 import { Product } from "@components/e-commerce";
 import { Loading } from "@components/feedback";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
@@ -12,7 +12,11 @@ const Products = () => {
   const params = useParams();
   const dispatch = useAppDispatch();
   const { records, loading, error } = useAppSelector((state) => state.products);
-
+  const cartItems = useAppSelector((state) => state.cart.items);
+  const productsFullInfo = records.map((el) => ({
+    ...el,
+    quantity: cartItems[el.id] || 0,
+  }));
   useEffect(() => {
     dispatch(actGetProducts(params.prefix as string));
     return () => {
@@ -22,9 +26,10 @@ const Products = () => {
 
   return (
     <Container>
+      <Heading>Products : {params.prefix}</Heading>
       <Loading loading={loading} error={error}>
         <GridList
-          records={records}
+          records={productsFullInfo}
           renderItems={(record) => <Product {...record} />}
         />
       </Loading>

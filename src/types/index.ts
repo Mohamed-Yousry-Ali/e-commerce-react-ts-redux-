@@ -22,6 +22,7 @@ export type TProduct = {
   cat_prefix: string;
   img: string;
   quantity?: number;
+  max?: number;
 };
 export type TProductsState = {
   records: TProduct[];

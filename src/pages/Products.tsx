@@ -13,7 +13,6 @@ const Products = () => {
   const dispatch = useAppDispatch();
   const { records, loading, error } = useAppSelector((state) => state.products);
 
-  console.log(records);
   useEffect(() => {
     dispatch(actGetProducts(params.prefix as string));
     return () => {

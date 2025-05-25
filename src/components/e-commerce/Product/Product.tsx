@@ -9,6 +9,8 @@ const { product, productImg } = styles;
 
 const Product = memo(({ id, title, price, img, max, quantity }: TProduct) => {
   const dispatch = useAppDispatch();
+  // State to manage loading state when adding to cart
+  // This is used to show a loading spinner while the product is being added to the cart
   const [isLoading, setIsLoading] = useState(false);
 
   const currentQuantity = Math.max((max ?? 0) - (quantity ?? 0), 0);

@@ -11,6 +11,7 @@ import Register from "@pages/Register";
 import Error from "@pages/Error";
 import CategoriesRTK from "@pages/CategoriesRTK";
 import ProductsRTK from "@pages/ProductsRTK";
+import CartPage from "@pages/CartPage";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
           }
           return true;
         },
+      },
+      {
+        path: "cart",
+        element: <CartPage />,
       },
       {
         path: "about-us",
